@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gramos A Dar</title>
+    <style>
+        body {
+            background-color: rgb(75, 74, 74);
+            color: white;
+        }
+
+        input {
+            font-size: 1.6em;
+        }
+
+        #gramosText {
+            font-size: 1.5em;
+        }
+
+        .money {
+            color: greenyellow;
+            font-size: 1.3em;
+        }
+
+        button {
+            font-size: 1.25em;
+        }
+    </style>
+</head>
+
+<body>
+
+    Precio que <span class="money">pagan</span>: <br> <input placeholder="$" id="pricetheypay" type="number" name=""
+        id="">
+    <br>
+    Cuando vale la libra: <br> <input placeholder="libra" id="libraPrice" type="number"> <br> <button onclick="start()">restart</button>
+    <br>
+    Gramos a pesar: <span id="gramosText"></span>g
+    <h4>
+
+
+        <!-- <pre>
+            function calcular2(
+                precioQuePaganTP,
+                precioPor500GramosUp,
+                unidadB = 500) {
+    
+                    return Math.floor((precioQuePaganTP * unidadB) / precioPor500GramosUp);
+    
+            }
+        </pre> -->
+    </h4>
+
+    <script>
+        var pricetheypay = document.getElementById("pricetheypay");
+        var libraPrice = document.getElementById("libraPrice");
+        var gramosText = document.getElementById("gramosText");
+        function start() {
+            pricetheypay.value = "";
+            libraPrice.value = "";
+            gramosText.innerHTML = "";
+            pricetheypay.focus();
+
+        }
+        start();
+        //calcular precio a cobrar
+        // function calcular(
+        //     pesoA,
+        //     precioPor500GramosUp,
+        //     unidadB = 500) {
+
+        //     return pesoA * (precioPor500GramosUp / unidadB);
+        // }
+        pricetheypay.addEventListener("keyup", function (event) {
+
+            if (event.key === "Enter") {
+                libraPrice.focus();
+                // update();
+            }
+        })
+        libraPrice.addEventListener("keyup", function (event) {
+
+            if (event.key === "Enter") {
+                update();
+            }
+        })
+        //calcular gramos a dar 
+        function calcular2(
+            precioQuePaganTP,
+            precioPor500GramosUp,
+            unidadB = 500) {
+
+            return Math.floor((precioQuePaganTP * unidadB) / precioPor500GramosUp);
+
+        }
+
+        function formartNum(num) {
+            return (num);
+        }
+        function update() {
+            gramosText.innerHTML = formartNum(calcular2(pricetheypay.value, libraPrice.value));
+        }
+    </script>
+</body>
+
+</html>
